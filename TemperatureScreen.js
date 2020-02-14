@@ -23,7 +23,7 @@ export default class TemperatureScreen extends Component {
   async componentDidMount(){
     let temperatures = await Measurements.getTemperatures();
     this.setState({
-      temperatures: temperatures.reverse(),
+      temperatures: temperatures,
     });
   }
 
@@ -37,7 +37,7 @@ export default class TemperatureScreen extends Component {
             <Text style={styles.measureText}>{this.state.temperatures[i].measure}F</Text>
           </View>
           <View style={styles.date}>
-            <Text style={styles.dateText}>{Moment(this.state.temperatures[i].created_at).format('d MMM h:mm')}</Text>
+            <Text style={styles.dateText}>{Moment(this.state.temperatures[i].created_at).format('dd D MMM h:mm')}</Text>
           </View>
         </View>
       )
@@ -50,7 +50,7 @@ export default class TemperatureScreen extends Component {
           style={styles.scrollView}>
           <ImageBackground source={require('./images/fishes2.jpg')} style={styles.headerBackground}>
             <View style={styles.headerTextBackground}>
-              <Text style={styles.headerText}>Fish Tank Monitor</Text>
+              <Text style={styles.headerText}></Text>
             </View>
             </ImageBackground>
           <View style={styles.body}>
