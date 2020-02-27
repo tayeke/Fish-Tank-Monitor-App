@@ -20,8 +20,10 @@ import {
 } from 'react-native';
 import CurrentTemp from './CurrentTemp.js';
 import CurrentTest from './CurrentTest.js';
+import CurrentPh from './CurrentPh.js';
 import TemperatureScreen from './TemperatureScreen.js';
 import TestScreen from './TestScreen.js';
+import PhScreen from './PhScreen.js';
 
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -48,15 +50,6 @@ function HomeScreen({ navigation }) {
         </View>
         </ImageBackground>
         <View style={styles.body}>
-          <TouchableOpacity onPress={() => navigation.navigate('Tests')} style={styles.sectionContainerContainer}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Test</Text>
-              <Text style={styles.sectionDescription}>
-                View test data results
-              </Text>
-            </View>
-            <CurrentTest style={styles.currentMeasure}></CurrentTest>
-          </TouchableOpacity>
           <TouchableOpacity onPress={() => navigation.navigate('Temperatures')} style={styles.sectionContainerContainer}>
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Temperature</Text>
@@ -65,6 +58,24 @@ function HomeScreen({ navigation }) {
               </Text>
             </View>
             <CurrentTemp style={styles.currentMeasure}></CurrentTemp>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('PH')} style={styles.sectionContainerContainer}>
+            <View style={styles.sectionContainer}>
+              <Text style={styles.sectionTitle}>PH</Text>
+              <Text style={styles.sectionDescription}>
+                View PH data results
+              </Text>
+            </View>
+            <CurrentPh style={styles.currentMeasure}></CurrentPh>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Tests')} style={styles.sectionContainerContainer}>
+            <View style={styles.sectionContainer}>
+              <Text style={styles.sectionTitle}>Test</Text>
+              <Text style={styles.sectionDescription}>
+                View test data results
+              </Text>
+            </View>
+            <CurrentTest style={styles.currentMeasure}></CurrentTest>
           </TouchableOpacity>
         </View>
       </ScrollView>
@@ -83,6 +94,7 @@ const App: () => React$Node = () => {
       <Stack.Navigator>
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Temperatures" component={TemperatureScreen} />
+        <Stack.Screen name="PH" component={PhScreen} />
         <Stack.Screen name="Tests" component={TestScreen} />
       </Stack.Navigator>
     </NavigationContainer>

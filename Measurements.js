@@ -49,6 +49,30 @@ class Measurements {
       console.error(error);
     }
   }
+
+  static async getPh() {
+    let headers = new Headers();
+    headers.append("Authorization", "Basic " + BASIC_AUTH_TOKEN);
+    try {
+      let response = await fetch('https://fish-tank-monitor.herokuapp.com/ph.json', {headers: headers});
+      let responseJson = await response.json();
+      return responseJson;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  static async getCurrentPh() {
+    let headers = new Headers();
+    headers.append("Authorization", "Basic " + BASIC_AUTH_TOKEN);
+    try {
+      let response = await fetch('https://fish-tank-monitor.herokuapp.com/ph/current.json', {headers: headers});
+      let responseJson = await response.json();
+      return responseJson;
+    } catch (error) {
+      console.error(error);
+    }
+  }
 }
 
 export default Measurements;
